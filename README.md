@@ -19,6 +19,7 @@ Buka `http://localhost:3000`. Situs ini menggunakan server Next.js; hasil build 
 - `/galeri` — pencarian koleksi video, peta bahasa dari materi sumber, dan kamus mini berbasis judul buku dwibahasa.
 - `/galeri/[slug]` — video utama, audio, halaman PDF yang mengikuti narasi, dan cerita terkait.
 - `/cerita-pendengar` — kirim dan baca cerita serta umpan balik pengunjung.
+- Halaman Cerita Pendengar juga menampilkan tiga pilihan editorial dari katalog; pilihan itu diberi label terpisah dari kiriman pengunjung.
 - `/sukarelawan` — daftar untuk berkontribusi.
 - `/tentang` — latar dan tujuan Hapakat.
 - `/jejak` — dokumentasi implementasi dan arsip tangkapan layar Hapakat terdahulu.
@@ -37,6 +38,8 @@ Sampul, audio, dan PDF yang digunakan website berada di `public/media/`. Gambar 
 Jika sumber PDF atau video berubah, jalankan `scripts/prepare_story_media.py` dengan Python yang memiliki Pillow dan NumPy, serta `ffmpeg` dan `pdftoppm` tersedia di PATH, untuk membuat ulang gambar dan penanda waktu.
 
 Foto budaya, dokumentasi kegiatan, tangkapan layar lama, peta bahasa, dan poster arsip yang dipilih dari `data/` disimpan sebagai WebP ringan di `public/media/heritage/`. Jalankan `scripts/prepare_heritage_media.py` dengan Python dan Pillow untuk membuat ulang aset tersebut dari sumbernya. Video demo `data/Video Hapakat.mp4` digunakan sebagai referensi tampilan lama. Poster Gelombang 2 adalah arsip bertanggal 2025, bukan pengumuman pendaftaran saat ini.
+
+Gambar pratinjau tautan 1200 × 630 berada di `public/media/social/`, termasuk satu gambar untuk tiap cerita. Jalankan `scripts/prepare_social_images.py` dengan Python dan Pillow untuk membuat ulang gambarnya. Metadata Open Graph, Twitter Card, canonical, sitemap, dan robots memakai `NEXT_PUBLIC_SITE_URL`; nilai bawaan adalah `https://hapakat.vercel.app`. Ganti variabel tersebut bila memakai domain lain.
 
 ## Verifikasi sebelum Vercel
 

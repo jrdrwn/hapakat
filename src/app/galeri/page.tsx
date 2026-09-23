@@ -1,12 +1,11 @@
+import { ArrowIcon } from "@/components/arrow-icon";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { GalleryExplorer } from "@/components/gallery-explorer";
 import { LanguageExplorer } from "@/components/language-explorer";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Galeri Cerita",
-  description: "Jelajahi sembilan video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.",
-};
+export const metadata: Metadata = pageMetadata("/galeri", "Galeri Cerita", "Jelajahi sembilan video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.");
 
 export default function GalleryPage() {
   return (
@@ -16,7 +15,7 @@ export default function GalleryPage() {
           <div className="section-kicker">GALERI CERITA / HAPAKAT</div>
           <h1>Temukan kisah.<br /><em>Lihat dan dengarkan.</em></h1>
           <p>Sembilan video cerita dwibahasa dari Kalimantan Tengah. Setiap kisah dilengkapi audio dan halaman PDF yang mengikuti narasi.</p>
-          <a className="button button-primary" href="#koleksi">Jelajahi video cerita <span aria-hidden="true">↗</span></a>
+          <a className="button button-primary" href="#koleksi">Jelajahi video cerita <span aria-hidden="true"><ArrowIcon /></span></a>
           <div className="page-hero-deco" aria-hidden="true">◌</div>
         </div>
       </section>
@@ -42,7 +41,7 @@ export default function GalleryPage() {
               <div className="language-map-caption">
                 <span>ARSIP PETA BAHASA</span>
                 <p>Peta dari materi Hapakat. Legenda menampilkan Dayak Ngaju, Maanyan, Bakumpai, dan bahasa daerah lainnya.</p>
-                <a href="/media/heritage/language-map.webp" target="_blank" rel="noopener noreferrer">Buka peta ukuran besar ↗</a>
+                <a href="/media/heritage/language-map.webp" target="_blank" rel="noopener noreferrer">Buka peta ukuran besar <ArrowIcon /></a>
               </div>
             </div>
             <LanguageExplorer />

@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowIcon } from "@/components/arrow-icon";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,7 +22,7 @@ export function SiteHeader() {
   return <header className="site-header"><div className="header-inner wrap">
     <Link className="brand" href="/" aria-label="Hapakat, kembali ke utama" onClick={() => setOpen(false)}><Image src="/media/logo-hapakat.png" width={175} height={48} alt="Hapakat" priority /></Link>
     <nav className={`nav ${open ? "nav-open" : ""}`} aria-label="Navigasi utama">{links.map(({ href, label }) => <Link key={href} href={href} onClick={() => setOpen(false)} aria-current={path === href || (href === "/galeri" && path.startsWith("/galeri/")) ? "page" : undefined}>{label}</Link>)}</nav>
-    <Link className="header-cta" href="/galeri">Mulai menonton <span aria-hidden="true">↗</span></Link>
+    <Link className="header-cta" href="/galeri">Mulai menonton <span aria-hidden="true"><ArrowIcon /></span></Link>
     <button className="menu-toggle" type="button" aria-label={open ? "Tutup menu" : "Buka menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? "✕" : "☰"}</button>
   </div></header>;
 }

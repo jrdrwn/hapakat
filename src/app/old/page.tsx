@@ -1,13 +1,12 @@
+import { ArrowIcon } from "@/components/arrow-icon";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { stories, videoFor, coverFor } from "@/lib/stories";
 import styles from "./old.module.css";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hapakat versi lama",
-  description: "Tampilan Hapakat terdahulu, dihidupkan kembali dari dokumentasi aslinya.",
-};
+export const metadata: Metadata = pageMetadata("/old", "Hapakat versi lama", "Tampilan Hapakat terdahulu, dihidupkan kembali dari dokumentasi aslinya.");
 
 const groups = [
   {
@@ -71,7 +70,7 @@ export default function OldPage() {
       <h2>{group.title}</h2><p className={styles.languageDescription}>{group.description}</p>
       <div className={styles.storyList}>{stories.filter(story => story.language === group.language).map(story => <article className={styles.story} key={story.slug}>
         <div className={styles.videoWrap}><video controls preload="none" playsInline poster={coverFor(story)} aria-label={`Video cerita ${story.title}`}><source src={videoFor(story)} type="video/mp4" />Browser Anda tidak mendukung pemutar video.</video></div>
-        <div className={styles.storyCopy}><h3>{story.title}</h3><p>{story.subtitle} — cerita rakyat berbahasa {group.title.replace("Bahasa ", "")} dari Kalimantan Tengah.</p><dl><div><dt>Penulis</dt><dd>: {story.author}</dd></div><div><dt>Bahasa</dt><dd>: {group.title.replace("Bahasa ", "")}</dd></div><div><dt>Koleksi</dt><dd>: {story.wave}</dd></div></dl><Link href={`/galeri/${story.slug}`}>Baca dan dengarkan cerita →</Link></div>
+        <div className={styles.storyCopy}><h3>{story.title}</h3><p>{story.subtitle} — cerita rakyat berbahasa {group.title.replace("Bahasa ", "")} dari Kalimantan Tengah.</p><dl><div><dt>Penulis</dt><dd>: {story.author}</dd></div><div><dt>Bahasa</dt><dd>: {group.title.replace("Bahasa ", "")}</dd></div><div><dt>Koleksi</dt><dd>: {story.wave}</dd></div></dl><Link href={`/galeri/${story.slug}`}>Baca dan dengarkan cerita <ArrowIcon direction="right" /></Link></div>
       </article>)}</div>
     </section>)}
 
@@ -90,7 +89,7 @@ export default function OldPage() {
       <Image src="/media/heritage/logo-tagline.webp" alt="Hapakat: Harmoni Aksi Pelestarian Bahasa Daerah Kalimantan Tengah" width={1250} height={375} sizes="(max-width: 800px) 100vw, 85vw" />
       <p><strong>Hapakat</strong> berasal dari bahasa Dayak Ngaju yang berarti <em>sepakat</em>—mewakili semangat persatuan untuk menjaga dan melestarikan bahasa daerah Kalimantan Tengah. Laman ini merupakan aksi digital kolaboratif yang dibangun atas kesepakatan bersama antara Duta Bahasa Kalimantan Tengah 2025, alumni Ikatan Dubas Kalimantan Tengah, komunitas bahasa, dan Balai Bahasa Provinsi Kalimantan Tengah. Melalui Hapakat, masyarakat diajak untuk aktif menyuarakan kembali cerita rakyat, memperluas akses terhadap narasi lokal dalam format audio, dan menjadikan teknologi sebagai ruang kebanggaan berbahasa daerah.</p>
     </section>
-    <footer className={styles.footer}><Link href="/">Lihat Hapakat sekarang ↗</Link><span>Palangka Raya, Kalimantan Tengah</span></footer>
+    <footer className={styles.footer}><Link href="/">Lihat Hapakat sekarang <ArrowIcon /></Link><span>Palangka Raya, Kalimantan Tengah</span></footer>
     <a className={styles.backTop} href="#utama" aria-label="Kembali ke atas">↑</a>
   </main>;
 }
