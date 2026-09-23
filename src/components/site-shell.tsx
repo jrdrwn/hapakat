@@ -9,6 +9,7 @@ import { useState } from "react";
 const links = [
   { href: "/", label: "Utama" },
   { href: "/galeri", label: "Galeri Cerita" },
+  { href: "/panduan", label: "Panduan" },
   { href: "/cerita-pendengar", label: "Cerita Pendengar" },
   { href: "/sukarelawan", label: "Sukarelawan" },
   { href: "/jejak", label: "Jejak Hapakat" },
@@ -30,5 +31,5 @@ export function SiteHeader() {
 export function SiteFooter() {
   const path = usePathname();
   if (path === "/old") return null;
-  return <footer className="footer"><div className="wrap footer-top"><Link href="/"><Image src="/media/logo-hapakat.png" alt="Hapakat" width={180} height={50} /></Link><p>Merawat bahasa lewat cerita.<br />Kalimantan Tengah, Indonesia.</p><div className="footer-links"><Link href="/galeri">Galeri cerita</Link><Link href="/jejak">Jejak kegiatan</Link><Link href="/sukarelawan">Jadi sukarelawan</Link><Link href="/kelola">Kelola</Link></div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Hapakat</span><span>Harmoni Aksi Pelestarian Bahasa Daerah Kalimantan Tengah</span></div></footer>;
+  return <footer className="footer"><div className="wrap footer-top"><Link href="/"><Image src="/media/logo-hapakat.png" alt="Hapakat" width={180} height={50} /></Link><p>Merawat bahasa lewat cerita.<br />Kalimantan Tengah, Indonesia.</p><div className="footer-links"><Link href="/galeri">Galeri cerita</Link><Link href="/panduan">Panduan penggunaan</Link><Link href="/jejak">Jejak kegiatan</Link><Link href="/sukarelawan">Jadi sukarelawan</Link><Link href="/kelola">Kelola</Link></div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Hapakat</span><span>Harmoni Aksi Pelestarian Bahasa Daerah Kalimantan Tengah</span></div></footer>;
 }

@@ -24,9 +24,9 @@ export default function GalleryPage() {
         <div className="wrap"><GalleryExplorer /></div>
       </section>
 
-      <section className="language-section section-pad">
+      <section className="language-section section-pad" id="bahasa-di-balik-cerita">
         <div className="wrap">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
               <div className="section-kicker">BAHASA DI BALIK CERITA</div>
               <h2>Kenali kata.<br /><em>Kenali tempatnya.</em></h2>

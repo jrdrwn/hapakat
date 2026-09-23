@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { ScrollMotion } from "@/components/scroll-motion";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -20,5 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="id"><body><SiteHeader />{children}<SiteFooter /></body></html>;
+  return <html lang="id"><body><ScrollMotion /><SiteHeader />{children}<SiteFooter /></body></html>;
 }

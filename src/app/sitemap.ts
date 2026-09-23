@@ -3,7 +3,7 @@ import { siteUrl } from "@/lib/seo";
 import { stories } from "@/lib/stories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["/", "/galeri", "/cerita-pendengar", "/sukarelawan", "/jejak", "/tentang", "/old"];
+  const pages = ["/", "/galeri", "/panduan", "/cerita-pendengar", "/sukarelawan", "/jejak", "/tentang", "/old"];
   return [
     ...pages.map((path) => ({
       url: new URL(path, siteUrl).toString(),
