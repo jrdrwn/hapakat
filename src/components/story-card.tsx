@@ -3,12 +3,12 @@ import Link from "next/link";
 import { ArrowIcon } from "@/components/arrow-icon";
 import { coverFor, type Story } from "@/lib/stories";
 
-export function StoryCard({ story, index = 0 }: { story: Story; index?: number }) {
+export function StoryCard({ story }: { story: Story }) {
   const href = `/galeri/${story.slug}`;
 
   return <article className="story-card" data-reveal>
     <Link className="cover-button" href={href} aria-label={`Buka cerita ${story.title}`}>
-      <Image src={coverFor(story)} alt={`Sampul buku ${story.title}`} width={440} height={310} sizes="(max-width: 560px) 50vw, (max-width: 800px) 45vw, 30vw" loading={index > 2 ? "lazy" : "eager"} />
+      <Image src={coverFor(story)} alt={`Sampul buku ${story.title}`} width={440} height={310} sizes="(max-width: 560px) 50vw, (max-width: 800px) 45vw, 30vw" />
       <span className="cover-play"><ArrowIcon /></span>
     </Link>
     <div className="story-card-body">

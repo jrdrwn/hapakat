@@ -10,6 +10,12 @@ import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export function generateStaticParams() {
+  return stories.map(({ slug }) => ({ slug }));
+}
+
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const story = storyBySlug((await params).slug);
   if (!story) return { title: "Cerita tidak ditemukan", robots: { index: false, follow: false } };
@@ -28,6 +34,6 @@ export default async function StoryPage({ params }: Props) {
       <div className="detail-intro"><div><div className="section-kicker">{story.wave.toUpperCase()} / {story.theme.toUpperCase()}</div><h1>{story.title}</h1><p className="detail-subtitle">{story.subtitle}</p></div><div className="detail-intro-side"><p>Tonton cerita rakyat Kalimantan Tengah, dengarkan narasinya, dan baca halaman buku yang mengikuti waktu pemutaran.</p><div className="detail-meta"><div><span>BAHASA</span><strong>{story.language}</strong></div><div><span>PENULIS</span><strong>{story.author}</strong></div></div></div></div>
     </div></section>
     <section className="experience-section"><div className="wrap"><StoryExperience story={story} pageCount={book.pageCount} cues={book.cues} /></div></section>
-    {related.length > 0 && <section className="related-section section-pad"><div className="wrap"><div className="section-heading"><div><div className="section-kicker">LANJUT MENONTON</div><h2>Masih dalam bahasa <em>{story.language}.</em></h2></div><Link href="/galeri" className="text-link dark">Lihat semua cerita <span aria-hidden="true"><ArrowIcon direction="right" /></span></Link></div><div className="story-grid">{related.map((item, index) => <StoryCard key={item.slug} story={item} index={index} />)}</div></div></section>}
+    {related.length > 0 && <section className="related-section section-pad"><div className="wrap"><div className="section-heading"><div><div className="section-kicker">LANJUT MENONTON</div><h2>Masih dalam bahasa <em>{story.language}.</em></h2></div><Link href="/galeri" className="text-link dark">Lihat semua cerita <span aria-hidden="true"><ArrowIcon direction="right" /></span></Link></div><div className="story-grid">{related.map((item) => <StoryCard key={item.slug} story={item} />)}</div></div></section>}
   </main>;
 }
