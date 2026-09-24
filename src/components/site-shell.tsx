@@ -31,5 +31,40 @@ export function SiteHeader() {
 export function SiteFooter() {
   const path = usePathname();
   if (path === "/old") return null;
-  return <footer className="footer"><div className="wrap footer-top"><Link href="/"><Image src="/media/logo-hapakat.png" alt="Hapakat" width={180} height={50} /></Link><p>Merawat bahasa lewat cerita.<br />Kalimantan Tengah, Indonesia.</p><div className="footer-links"><Link href="/galeri">Galeri cerita</Link><Link href="/panduan">Panduan penggunaan</Link><Link href="/jejak">Jejak kegiatan</Link><Link href="/sukarelawan">Jadi sukarelawan</Link><Link href="/kelola">Kelola</Link></div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Hapakat</span><span>Harmoni Aksi Pelestarian Bahasa Daerah Kalimantan Tengah</span></div></footer>;
+  return <footer className="footer">
+    <div className="footer-sigil" aria-hidden="true"><span /><span /><span /></div>
+    <div className="wrap footer-top">
+      <div className="footer-identity">
+        <Link className="footer-brand" href="/" aria-label="Hapakat, kembali ke utama"><Image src="/media/logo-hapakat.png" alt="" width={190} height={55} /></Link>
+        <p className="footer-statement">Cerita tetap hidup<br /><em>saat kita mendengarnya.</em></p>
+        <p className="footer-description">Ruang untuk menonton, mendengar, dan membaca cerita rakyat dalam bahasa daerah Kalimantan Tengah.</p>
+        <div className="footer-languages" aria-label="Bahasa dalam koleksi Hapakat"><span>Dayak Ngaju</span><span>Maanyan</span><span>Bakumpay</span></div>
+      </div>
+      <nav className="footer-nav" aria-label="Jelajahi Hapakat">
+        <h2>Jelajahi</h2>
+        <Link href="/galeri">Galeri cerita</Link>
+        <Link href="/panduan">Panduan</Link>
+        <Link href="/cerita-pendengar">Cerita pendengar</Link>
+        <Link href="/jejak">Jejak Hapakat</Link>
+      </nav>
+      <nav className="footer-nav" aria-label="Tentang dan kontribusi">
+        <h2>Ikut merawat</h2>
+        <Link href="/sukarelawan">Jadi sukarelawan</Link>
+        <Link href="/cerita-pendengar#bagikan">Bagikan cerita</Link>
+        <Link href="/tentang">Tentang Hapakat</Link>
+        <Link href="/kelola">Kelola</Link>
+      </nav>
+      <div className="footer-invite">
+        <span className="footer-invite-mark" aria-hidden="true">✦</span>
+        <span className="footer-invite-kicker">MULAI MENDENGAR</span>
+        <p>Satu cerita bisa membuka banyak percakapan.</p>
+        <Link href="/galeri" aria-label="Pilih cerita di galeri">Pilih cerita <ArrowIcon direction="right" /></Link>
+      </div>
+    </div>
+    <div className="wrap footer-bottom">
+      <span>© {new Date().getFullYear()} Hapakat</span>
+      <span>Harmoni Aksi Pelestarian Bahasa Daerah Kalimantan Tengah</span>
+      <a href="#top">Kembali ke atas <ArrowIcon direction="right" /></a>
+    </div>
+  </footer>;
 }

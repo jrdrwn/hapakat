@@ -462,6 +462,64 @@ html,body{overflow-x:clip}
 }
 @media(prefers-reduced-motion:reduce){.living-section,.living-current,.living-rhythm{animation:none}}
 
+/* Footer: a clear final invitation and complete site navigation. */
+.page-top-anchor{display:block;height:0;overflow:hidden}
+.footer{position:relative;isolation:isolate;overflow:hidden;padding:78px 0 26px;background:radial-gradient(circle at 96% 10%,rgba(157,78,31,.24),transparent 33%),#211913;color:#fff4e6}
+.footer:before{content:"";position:absolute;inset:0 0 auto;height:16px;background:url('/media/heritage/woven-border.svg') left top/80px 16px repeat-x;opacity:.85;pointer-events:none}
+.footer-sigil{position:absolute;right:-170px;bottom:-320px;width:590px;aspect-ratio:1;pointer-events:none;opacity:.22;z-index:-1}
+.footer-sigil span{position:absolute;inset:0;border:1px solid #e89747;transform:rotate(45deg)}
+.footer-sigil span:nth-child(2){inset:75px;border-radius:50%;transform:none}
+.footer-sigil span:nth-child(3){inset:155px;transform:rotate(45deg)}
+.footer-top{position:relative;display:grid;grid-template-columns:minmax(280px,1.5fr) minmax(120px,.58fr) minmax(140px,.7fr) minmax(220px,.92fr);align-items:start;gap:clamp(24px,3vw,48px)}
+.footer-brand{display:inline-block}
+.footer-brand img{width:190px;height:auto;object-fit:contain;object-position:left}
+.footer-top .footer-statement{margin-top:30px;font:800 clamp(27px,2.7vw,38px)/1.18 'Plus Jakarta Sans',Arial,sans-serif;letter-spacing:-.055em;color:#fff4e8}
+.footer-statement em{color:#f9a950}
+.footer-top .footer-description{max-width:350px;margin-top:17px;color:#c9b9a9;font-size:14px;line-height:1.75}
+.footer-languages{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.footer-languages span{border:1px solid rgba(255,193,125,.32);border-radius:100px;padding:7px 10px;color:#f4c391;font-size:10px;font-weight:800;letter-spacing:.05em}
+.footer-nav{display:flex;flex-direction:column;align-items:start;gap:14px;padding-top:11px}
+.footer-nav h2{margin:0 0 12px;color:#ed9a48;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.footer-top .footer-nav a{color:#f0e5d9;font-size:14px;font-weight:600;line-height:1.35;transition:color .2s ease,translate .2s ease}
+.footer-top .footer-nav a:hover,.footer-top .footer-nav a:focus-visible{color:#ffb55f;translate:4px 0;text-decoration:none}
+.footer-invite{position:relative;overflow:hidden;min-height:238px;padding:28px;border-radius:10px;background:linear-gradient(140deg,#ffba63,#f28a31);box-shadow:0 20px 45px rgba(10,5,2,.16);color:#26180e}
+.footer-invite:after{content:"";position:absolute;width:190px;height:190px;right:-93px;top:-92px;border:1px solid rgba(80,38,10,.27);border-radius:50%;pointer-events:none}
+.footer-invite-mark{position:absolute;right:22px;top:17px;font:36px/1 Georgia,serif;color:#703512}
+.footer-invite-kicker{display:block;margin:4px 0 23px;font-size:10px;font-weight:900;letter-spacing:.15em}
+.footer-top .footer-invite p{max-width:225px;font:800 clamp(22px,2vw,27px)/1.25 'Plus Jakarta Sans',Arial,sans-serif;letter-spacing:-.045em;color:#26180e}
+.footer-top .footer-invite a{display:inline-flex;align-items:center;gap:15px;margin-top:27px;border-bottom:1px solid currentColor;padding-bottom:5px;color:#26180e;font-size:13px;font-weight:900;text-decoration:none}
+.footer-invite a .arrow-icon{width:16px;height:16px;transition:translate .2s ease}
+.footer-invite a:hover .arrow-icon{translate:4px 0}
+.footer-bottom{position:relative;align-items:center;margin-top:64px;padding-top:22px;border-top:1px solid rgba(255,220,177,.2);color:#b6a495;font-size:12px}
+.footer-bottom a{display:inline-flex;align-items:center;gap:9px;color:#f0bd87;font-weight:800;white-space:nowrap}
+.footer-bottom a .arrow-icon{width:15px;height:15px;rotate:-90deg;transition:translate .2s ease}
+.footer-bottom a:hover .arrow-icon{translate:3px 0}
+@media(max-width:1050px){
+  .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 55px}
+  .footer-invite{grid-column:2;grid-row:1}
+  .footer-bottom{flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .footer{padding-top:58px}
+  .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 18px}
+  .footer-identity,.footer-invite{grid-column:1/-1}
+  .footer-invite{grid-row:auto;min-height:0;padding:25px}
+  .footer-statement{margin-top:22px}
+  .footer-nav{padding-top:0}
+  .footer-nav h2{margin-bottom:3px}
+  .footer-bottom{align-items:flex-start;gap:10px;margin-top:43px}
+  .footer-bottom span:nth-child(2){order:3;width:100%;line-height:1.5}
+  .footer-bottom a{margin-left:auto}
+  .footer-sigil{right:-300px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .footer-sigil{animation:footer-sigil-turn 42s linear infinite}
+  .footer-invite-mark{animation:footer-mark-breathe 5s ease-in-out infinite}
+  @keyframes footer-sigil-turn{to{transform:rotate(360deg)}}
+  @keyframes footer-mark-breathe{50%{transform:rotate(20deg) scale(.78);opacity:.6}}
+}
+@media(prefers-reduced-motion:reduce){.footer-sigil,.footer-invite-mark,.footer-nav a,.footer-invite a .arrow-icon,.footer-bottom a .arrow-icon{animation:none;transition:none}}
+
 /* Quiet movement beyond the home hero: warm light, image depth, and responsive details. */
 .page-hero .section-kicker{position:relative;display:inline-flex;align-items:center;gap:13px}
 .page-hero .section-kicker:before{content:"";width:28px;height:2px;background:currentColor;transform-origin:left center}
