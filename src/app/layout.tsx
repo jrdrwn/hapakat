@@ -21,5 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="id"><body><ScrollMotion /><SiteHeader />{children}<SiteFooter /></body></html>;
+  return <html lang="id"><body><ScrollMotion /><SiteHeader /><div className="language-ribbon" aria-hidden="true"><div className="language-ribbon-track">{[0, 1].map((copy) => <span className="language-ribbon-group" key={copy}><b>✦</b> HAPAKAT <b>✦</b> DAYAK NGAJU <b>✦</b> MAANYAN <b>✦</b> BAKUMPAY <b>✦</b> CERITA KALIMANTAN TENGAH <b>✦</b> SUARA YANG TERUS HIDUP <b>✦</b></span>)}</div></div>{children}<SiteFooter /></body></html>;
 }
