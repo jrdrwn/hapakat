@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/arrow-icon";
+import { CulturalMotif } from "@/components/cultural-motif";
 import { coverFor, stories } from "@/lib/stories";
 import { pageMetadata } from "@/lib/seo";
 
@@ -62,7 +63,7 @@ export default function GuidePage() {
       </div>
     </section>
 
-    <section className="section-pad guide-faq" id="pertanyaan"><div className="wrap guide-faq-grid" data-reveal><div><div className="section-kicker">MASIH BINGUNG?</div><h2>Pertanyaan<br /><em>yang sering muncul.</em></h2><p>Mulai saja dari cerita yang kamu suka. Berikut jawaban untuk beberapa hal yang mungkin kamu temui.</p></div><div className="guide-faq-list">{questions.map(({ question, answer }) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
+    <section className="section-pad guide-faq section-with-motif" id="pertanyaan"><CulturalMotif side="left" /><div className="wrap guide-faq-grid" data-reveal><div><div className="section-kicker">MASIH BINGUNG?</div><h2>Pertanyaan<br /><em>yang sering muncul.</em></h2><p>Mulai saja dari cerita yang kamu suka. Berikut jawaban untuk beberapa hal yang mungkin kamu temui.</p></div><div className="guide-faq-list">{questions.map(({ question, answer }) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></section>
 
     <section className="guide-end"><div className="wrap"><div><span className="section-kicker">SIAP MENJELAJAH?</span><h2>Satu cerita bisa membuka<br /><em>banyak percakapan.</em></h2></div><Link className="button button-primary" href="/galeri">Pilih cerita pertama <ArrowIcon /></Link></div></section>
   </main>;

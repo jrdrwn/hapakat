@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { GalleryExplorer } from "@/components/gallery-explorer";
 import { LanguageExplorer } from "@/components/language-explorer";
+import { CulturalMotif } from "@/components/cultural-motif";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata("/galeri", "Galeri Cerita", "Jelajahi sembilan video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.");
@@ -24,7 +25,8 @@ export default function GalleryPage() {
         <div className="wrap"><GalleryExplorer /></div>
       </section>
 
-      <section className="language-section section-pad" id="bahasa-di-balik-cerita">
+      <section className="language-section section-pad section-with-motif" id="bahasa-di-balik-cerita">
+        <CulturalMotif side="left" pattern="woven" />
         <div className="wrap">
           <div className="section-heading" data-reveal>
             <div>

@@ -47,6 +47,7 @@ const motionGroups = [
 ] as const;
 
 const passageGroups = [
+  { selector: "main .cultural-motif", mode: "motif" },
   { selector: "main .intro-grid, main .gallery-controls, main .listener-curated-grid, main .roles-section .section-heading, main .mission-section > .wrap > h2, main .guide-end > .wrap, main .heritage-end > .wrap, main .related-section > .wrap", mode: "out" },
   { selector: "main .home-documentation-grid, main .about-story-grid, main .heritage-story-grid, main .about-bottom-grid, main .feedback-form-side, main .language-layout, main .guide-faq-grid, main .form-layout, main .heritage-poster-grid, main .experience-section > .wrap", mode: "combo" },
 ] as const;
@@ -118,7 +119,7 @@ export function ScrollMotion() {
     const variants = new WeakMap<HTMLElement, MotionVariant>();
     const passageModes = new WeakMap<HTMLElement, PassageMode>();
     const passageStates = new WeakMap<HTMLElement, "visible" | "exited">();
-    const running = new WeakMap<HTMLElement, Animation>();
+    const running = new WeakMap<Element, Animation>();
     const animations = new Set<Animation>();
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -168,6 +169,11 @@ export function ScrollMotion() {
         const mode = passageModes.get(element);
         const state = passageStates.get(element);
         if (!mode || (entry.isIntersecting && state === "visible") || (!entry.isIntersecting && state !== "visible")) continue;
+        const motif = mode === "motif";
+        const side = element.classList.contains("cultural-motif-left") ? -1 : 1;
+        const motifOpacity = window.matchMedia("(max-width: 700px)").matches
+          ? element.classList.contains("cultural-motif-light") ? .34 : .23
+          : element.classList.contains("cultural-motif-light") ? .48 : .34;
 
         if (entry.isIntersecting) {
           passageStates.set(element, "visible");
@@ -178,20 +184,37 @@ export function ScrollMotion() {
 
         const current = getComputedStyle(element);
         const from = state
-          ? { opacity: current.opacity, translate: current.translate === "none" ? "0 0" : current.translate, scale: current.scale === "none" ? "1" : current.scale }
-          : { opacity: "0", translate: "0 28px", scale: ".98" };
+          ? { opacity: current.opacity, translate: current.translate === "none" ? "0 0" : current.translate, scale: current.scale === "none" ? "1" : current.scale, rotate: current.rotate === "none" ? "0deg" : current.rotate }
+          : motif
+            ? { opacity: "0", translate: `${side * 52}px 18px`, scale: ".72", rotate: `${side * 28}deg` }
+            : { opacity: "0", translate: "0 28px", scale: ".98", rotate: "0deg" };
         running.get(element)?.cancel();
         const to = entry.isIntersecting
-          ? { opacity: 1, translate: "0 0", scale: "1" }
-          : { opacity: .62, translate: `0 ${scrollDirection * -24}px`, scale: ".985" };
+          ? { opacity: motif ? motifOpacity : 1, translate: "0 0", scale: "1", rotate: "0deg" }
+          : motif
+            ? { opacity: 0, translate: `${side * 32}px ${scrollDirection * -32}px`, scale: ".78", rotate: `${side * 24}deg` }
+            : { opacity: .62, translate: `0 ${scrollDirection * -24}px`, scale: ".985", rotate: "0deg" };
         const animation = element.animate([from, to], {
-          duration: entry.isIntersecting ? 560 : 380,
+          duration: motif ? entry.isIntersecting ? 900 : 520 : entry.isIntersecting ? 560 : 380,
           easing: "cubic-bezier(.2,.78,.24,1)",
           fill: "forwards",
         });
         running.set(element, animation);
         animations.add(animation);
         animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
+        if (motif) {
+          element.querySelectorAll<SVGPathElement>(".cultural-motif-line").forEach((path, index) => {
+            const strokeDashoffset = state ? getComputedStyle(path).strokeDashoffset : "100";
+            running.get(path)?.cancel();
+            const lineAnimation = path.animate(
+              [{ strokeDashoffset }, { strokeDashoffset: entry.isIntersecting ? "0" : "100" }],
+              { duration: entry.isIntersecting ? 950 : 480, delay: entry.isIntersecting ? index * 80 : 0, easing: "cubic-bezier(.2,.78,.24,1)", fill: "forwards" },
+            );
+            running.set(path, lineAnimation);
+            animations.add(lineAnimation);
+            lineAnimation.finished.then(() => animations.delete(lineAnimation)).catch(() => animations.delete(lineAnimation));
+          });
+        }
       }
     }, { threshold: 0, rootMargin: "-18% 0px -18% 0px" });
 
