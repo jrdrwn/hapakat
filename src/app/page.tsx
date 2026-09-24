@@ -6,6 +6,7 @@ import { StoryCard } from "@/components/story-card";
 import { HomeAudioSurprise } from "@/components/home-audio-surprise";
 import { ScrambleText } from "@/components/scramble-text";
 import { CulturalMotif } from "@/components/cultural-motif";
+import { LivingBackdrop } from "@/components/living-backdrop";
 import { coverFor, stories } from "@/lib/stories";
 import { pageMetadata } from "@/lib/seo";
 
@@ -18,6 +19,7 @@ export default function Home() {
   const featured = stories[0];
   return <main>
     <section className="hero home-hero">
+      <LivingBackdrop variant="home" />
       <div className="hero-glow" aria-hidden="true" />
       <div className="hero-atmosphere" aria-hidden="true">
         <span className="hero-atmosphere-ring hero-atmosphere-ring-one" />

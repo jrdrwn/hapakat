@@ -402,6 +402,66 @@ html,body{overflow-x:clip}
 @media(max-width:700px){.cultural-motif{width:220px;opacity:.23}.cultural-motif-light{opacity:.34}.cultural-motif-left{left:-105px}.cultural-motif-right{right:-105px}}
 @media(prefers-reduced-motion:reduce){.section-with-motif:before,.cultural-motif-orbit,.cultural-motif-woven .cultural-motif-diamond{animation:none}}
 
+/* A second visual layer: flowing river lines and woven diamonds across pages. */
+.page-hero>.living-backdrop,.story-detail-hero>.living-backdrop,.home-hero>.living-backdrop{position:absolute;inset:0;z-index:0}
+.page-hero>.wrap,.story-detail-hero>.wrap{position:relative;z-index:1}
+.home-hero>.living-backdrop{color:#ffb15d;opacity:.55}
+.home-hero>.hero-atmosphere{z-index:0}
+.home-hero>.hero-grid{z-index:1}
+.living-section{position:relative;isolation:isolate;overflow:hidden;background-image:url('/media/heritage/woven-field.svg'),radial-gradient(ellipse 48% 75% at 96% 5%,rgba(220,135,52,.12),transparent 85%),radial-gradient(ellipse 55% 70% at 0% 100%,rgba(191,109,43,.08),transparent 82%);background-size:320px 320px,auto,auto;background-repeat:repeat,no-repeat,no-repeat}
+.living-section>.living-backdrop{position:absolute;inset:0;z-index:-1}
+.living-section>:not(.living-backdrop){position:relative;z-index:1}
+.living-backdrop{overflow:hidden;pointer-events:none;color:#ffc078;opacity:.8;transform-origin:70% 50%}
+.living-backdrop-light{color:#a85422;opacity:.56}
+.living-backdrop svg{display:block;width:100%;height:100%;min-height:260px}
+.living-backdrop-line{fill:none;stroke:currentColor;stroke-width:2;stroke-dasharray:100;stroke-dashoffset:0;vector-effect:non-scaling-stroke}
+.living-backdrop-line:nth-child(2){stroke-width:1.5;opacity:.7}
+.living-backdrop-line:nth-child(3){stroke-width:1;opacity:.5}
+.living-rhythm{fill:none;stroke:currentColor;stroke-width:2.4;transform-box:fill-box;transform-origin:center}
+.living-rhythm circle{fill:currentColor;stroke:none}
+.living-rhythm-low{opacity:.55}
+.page-hero .living-current{opacity:.56}
+.living-section .living-current{opacity:.6}
+.page-hero .living-rhythm,.story-detail-hero .living-rhythm{opacity:.72}
+.living-section .living-rhythm{opacity:.62}
+.living-backdrop-gallery{color:#ffd08a}
+.living-backdrop-guide{color:#ffc079}
+.living-backdrop-volunteer{color:#ffcc87}
+.living-backdrop-heritage{color:#f5b36d}
+.living-backdrop-about{color:#ffdc9a}
+.living-backdrop-story{color:#f6bd7b}
+.living-backdrop-light{color:#a85422}
+.guide-page-hero{background-image:linear-gradient(90deg,rgba(31,21,15,.96) 0%,rgba(31,21,15,.82) 55%,rgba(31,21,15,.62) 100%),url('/media/heritage/smk-maharati.webp');background-size:cover;background-position:center 55%}
+.listener-page-hero{background-image:linear-gradient(90deg,rgba(31,21,15,.96) 0%,rgba(31,21,15,.81) 53%,rgba(31,21,15,.51) 100%),url('/media/heritage/sungai-melawen.webp');background-size:cover;background-position:center 52%}
+@media(prefers-reduced-motion:no-preference){
+  .living-section{animation:living-field-drift 24s linear infinite}
+  .living-current{animation:living-current-drift 14s ease-in-out infinite alternate}
+  .living-backdrop-home .living-current{animation:living-home-flow 16s ease-in-out infinite alternate}
+  .living-backdrop-gallery .living-current{animation:living-gallery-shift 9s ease-in-out infinite alternate}
+  .living-backdrop-guide .living-current,.living-backdrop-story .living-current{animation:living-page-sway 11s ease-in-out infinite alternate}
+  .living-backdrop-volunteer .living-current{animation:living-network-pulse 10s ease-in-out infinite alternate}
+  .living-backdrop-heritage .living-current{animation:living-archive-rise 12s ease-in-out infinite alternate}
+  .living-backdrop-about .living-current{animation:living-about-orbit 22s ease-in-out infinite alternate}
+  .living-rhythm{animation:living-rhythm-breathe 7s ease-in-out infinite alternate}
+  .living-rhythm-low{animation-delay:-3s;animation-duration:9s}
+  @keyframes living-current-drift{to{transform:translate(-24px,16px)}}
+  @keyframes living-home-flow{to{transform:translate(32px,-12px)}}
+  @keyframes living-gallery-shift{to{transform:translate(-12px,20px) rotate(-2deg)}}
+  @keyframes living-page-sway{to{transform:translate(5px,-12px) scale(1.025)}}
+  @keyframes living-network-pulse{to{transform:scale(1.045) rotate(2deg)}}
+  @keyframes living-archive-rise{to{transform:translate(0,-20px)}}
+  @keyframes living-about-orbit{to{transform:rotate(8deg) scale(1.035)}}
+  @keyframes living-rhythm-breathe{to{transform:translate(-9px,11px) scale(.92);opacity:.4}}
+  @keyframes living-field-drift{to{background-position:32px 16px,0 0,0 0}}
+}
+@media(max-width:700px){
+  .living-backdrop svg{width:180%;margin-left:-48%}
+  .living-backdrop-light{opacity:.3}
+  .page-hero .living-backdrop,.story-detail-hero .living-backdrop,.home-hero .living-backdrop{opacity:.55}
+  .living-section{background-image:url('/media/heritage/woven-field.svg'),radial-gradient(ellipse 75% 50% at 100% 0%,rgba(220,135,52,.1),transparent 85%);background-size:240px 240px,auto;background-repeat:repeat,no-repeat}
+}
+@media(prefers-reduced-motion:reduce){.living-section,.living-current,.living-rhythm{animation:none}}
+
 /* Quiet movement beyond the home hero: warm light, image depth, and responsive details. */
 .page-hero .section-kicker{position:relative;display:inline-flex;align-items:center;gap:13px}
 .page-hero .section-kicker:before{content:"";width:28px;height:2px;background:currentColor;transform-origin:left center}

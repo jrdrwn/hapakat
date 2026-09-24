@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/arrow-icon";
 import { CulturalMotif } from "@/components/cultural-motif";
+import { LivingBackdrop } from "@/components/living-backdrop";
 import { coverFor, stories } from "@/lib/stories";
 import { pageMetadata } from "@/lib/seo";
 
@@ -24,6 +25,7 @@ const questions = [
 export default function GuidePage() {
   return <main>
     <section className="page-hero guide-page-hero">
+      <LivingBackdrop variant="guide" />
       <div className="wrap guide-hero-grid">
         <div className="guide-hero-copy">
           <div className="section-kicker">PANDUAN / HAPAKAT</div>
@@ -46,7 +48,8 @@ export default function GuidePage() {
       </div>
     </section>
 
-    <section className="section-pad guide-main-section">
+    <section className="section-pad guide-main-section living-section">
+      <LivingBackdrop tone="light" variant="guide" />
       <div className="wrap guide-layout">
         <nav className="guide-toc" aria-label="Isi panduan"><span>DI HALAMAN INI</span><a href="#pilih-cerita">01 / Memilih cerita</a><a href="#nikmati-cerita">02 / Menonton dan mendengar</a><a href="#baca-buku">03 / Mengikuti buku</a><a href="#jelajah-bahasa">04 / Mengenal bahasa</a><a href="#ikut-berbagi">05 / Berbagi cerita</a><a href="#pertanyaan">Pertanyaan umum</a></nav>
         <div className="guide-articles">

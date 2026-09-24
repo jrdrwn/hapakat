@@ -48,6 +48,7 @@ const motionGroups = [
 
 const passageGroups = [
   { selector: "main .cultural-motif", mode: "motif" },
+  { selector: "main .living-backdrop", mode: "backdrop" },
   { selector: "main .intro-grid, main .gallery-controls, main .listener-curated-grid, main .roles-section .section-heading, main .mission-section > .wrap > h2, main .guide-end > .wrap, main .heritage-end > .wrap, main .related-section > .wrap", mode: "out" },
   { selector: "main .home-documentation-grid, main .about-story-grid, main .heritage-story-grid, main .about-bottom-grid, main .feedback-form-side, main .language-layout, main .guide-faq-grid, main .form-layout, main .heritage-poster-grid, main .experience-section > .wrap", mode: "combo" },
 ] as const;
@@ -170,6 +171,7 @@ export function ScrollMotion() {
         const state = passageStates.get(element);
         if (!mode || (entry.isIntersecting && state === "visible") || (!entry.isIntersecting && state !== "visible")) continue;
         const motif = mode === "motif";
+        const backdrop = mode === "backdrop";
         const side = element.classList.contains("cultural-motif-left") ? -1 : 1;
         const motifOpacity = window.matchMedia("(max-width: 700px)").matches
           ? element.classList.contains("cultural-motif-light") ? .34 : .23
@@ -187,23 +189,27 @@ export function ScrollMotion() {
           ? { opacity: current.opacity, translate: current.translate === "none" ? "0 0" : current.translate, scale: current.scale === "none" ? "1" : current.scale, rotate: current.rotate === "none" ? "0deg" : current.rotate }
           : motif
             ? { opacity: "0", translate: `${side * 52}px 18px`, scale: ".72", rotate: `${side * 28}deg` }
+            : backdrop
+              ? { opacity: "0", translate: "54px 15px", scale: "1.08", rotate: "4deg" }
             : { opacity: "0", translate: "0 28px", scale: ".98", rotate: "0deg" };
         running.get(element)?.cancel();
         const to = entry.isIntersecting
-          ? { opacity: motif ? motifOpacity : 1, translate: "0 0", scale: "1", rotate: "0deg" }
+          ? { opacity: motif ? motifOpacity : backdrop ? element.classList.contains("living-backdrop-home") ? .55 : element.classList.contains("living-backdrop-light") ? .56 : .8 : 1, translate: "0 0", scale: "1", rotate: "0deg" }
           : motif
             ? { opacity: 0, translate: `${side * 32}px ${scrollDirection * -32}px`, scale: ".78", rotate: `${side * 24}deg` }
+            : backdrop
+              ? { opacity: 0, translate: `-36px ${scrollDirection * -24}px`, scale: "1.05", rotate: "-3deg" }
             : { opacity: .62, translate: `0 ${scrollDirection * -24}px`, scale: ".985", rotate: "0deg" };
         const animation = element.animate([from, to], {
-          duration: motif ? entry.isIntersecting ? 900 : 520 : entry.isIntersecting ? 560 : 380,
+          duration: motif || backdrop ? entry.isIntersecting ? 900 : 520 : entry.isIntersecting ? 560 : 380,
           easing: "cubic-bezier(.2,.78,.24,1)",
           fill: "forwards",
         });
         running.set(element, animation);
         animations.add(animation);
         animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
-        if (motif) {
-          element.querySelectorAll<SVGPathElement>(".cultural-motif-line").forEach((path, index) => {
+        if (motif || backdrop) {
+          element.querySelectorAll<SVGPathElement>(motif ? ".cultural-motif-line" : ".living-backdrop-line").forEach((path, index) => {
             const strokeDashoffset = state ? getComputedStyle(path).strokeDashoffset : "100";
             running.get(path)?.cancel();
             const lineAnimation = path.animate(

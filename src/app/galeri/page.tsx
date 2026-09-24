@@ -4,6 +4,7 @@ import Image from "next/image";
 import { GalleryExplorer } from "@/components/gallery-explorer";
 import { LanguageExplorer } from "@/components/language-explorer";
 import { CulturalMotif } from "@/components/cultural-motif";
+import { LivingBackdrop } from "@/components/living-backdrop";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata("/galeri", "Galeri Cerita", "Jelajahi sembilan video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.");
@@ -12,6 +13,7 @@ export default function GalleryPage() {
   return (
     <main>
       <section className="page-hero gallery-page-hero">
+        <LivingBackdrop variant="gallery" />
         <div className="wrap">
           <div className="section-kicker">GALERI CERITA / HAPAKAT</div>
           <h1>Temukan kisah.<br /><em>Lihat dan dengarkan.</em></h1>
@@ -21,7 +23,8 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="catalog-section section-pad gallery-main" id="koleksi">
+      <section className="catalog-section section-pad gallery-main living-section" id="koleksi">
+        <LivingBackdrop tone="light" variant="gallery" />
         <div className="wrap"><GalleryExplorer /></div>
       </section>
 
