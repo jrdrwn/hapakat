@@ -2,13 +2,19 @@ import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { Readable } from "node:stream";
 import { videoFileFor } from "@/lib/video-sources";
+import videoUrls from "@/data/video-urls.json";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 type Context = { params: Promise<{ slug: string }> };
 
 async function streamVideo(request: Request, { params }: Context, headOnly = false) {
-  const file = videoFileFor((await params).slug);
+  const slug = (await params).slug;
+  if (process.env.VERCEL === "1") {
+    const destination = videoUrls[slug as keyof typeof videoUrls];
+    return destination ? Response.redirect(destination, 307) : new Response("Video tidak ditemukan.", { status: 404 });
+  }
+  const file = videoFileFor(slug);
   if (!file) return new Response("Video tidak ditemukan.", { status: 404 });
   let size: number;
   try { size = (await stat(file)).size; } catch { return new Response("Berkas video tidak tersedia.", { status: 404 }); }

@@ -1,3 +1,5 @@
+import videoUrls from "@/data/video-urls.json";
+
 export type Story = {
   slug: string;
   title: string;
@@ -25,4 +27,7 @@ export function storyBySlug(slug: string) { return stories.find((story) => story
 export function coverFor(story: Story) { return `/media/covers/${story.slug}.jpg`; }
 export function audioFor(story: Story) { return `/media/audio/${story.slug}.mp3`; }
 export function bookFor(story: Story) { return `/media/books/${story.slug}.pdf`; }
-export function videoFor(story: Story) { return `/api/video/${story.slug}`; }
+export function videoFor(story: Story) {
+  if (process.env.NODE_ENV === "production") return videoUrls[story.slug as keyof typeof videoUrls] ?? `/api/video/${story.slug}`;
+  return `/api/video/${story.slug}`;
+}
