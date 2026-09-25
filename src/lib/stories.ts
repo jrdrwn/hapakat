@@ -1,4 +1,5 @@
 import videoUrls from "@/data/video-urls.json";
+import fallbackVideoUrls from "@/data/video-fallback-urls.json";
 
 export type Story = {
   slug: string;
@@ -30,4 +31,7 @@ export function bookFor(story: Story) { return `/media/books/${story.slug}.pdf`;
 export function videoFor(story: Story) {
   if (process.env.NODE_ENV === "production") return videoUrls[story.slug as keyof typeof videoUrls] ?? `/api/video/${story.slug}`;
   return `/api/video/${story.slug}`;
+}
+export function fallbackVideoFor(story: Story) {
+  return fallbackVideoUrls[story.slug as keyof typeof fallbackVideoUrls] ?? null;
 }
