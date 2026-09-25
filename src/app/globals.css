@@ -36,6 +36,7 @@
 .experience-audio .media-direct-link{justify-content:flex-start;margin-top:13px}
 .media-direct-link span{color:#a33f2b}
 .media-direct-link a{display:inline-flex;align-items:center;gap:6px;color:#a95b20;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.media-retry-button{border:1px solid #a95b20;border-radius:999px;background:#a95b20;color:#fff;padding:8px 14px;font-size:12px;font-weight:800;min-height:36px}.media-retry-button:hover{background:#874514}.media-retry-button:focus-visible{outline:3px solid #ed9c45;outline-offset:3px}
 .media-direct-link .arrow-icon{width:14px;height:14px}
 .surprise-error a{color:#ffe0ae;font-weight:800;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.detail-intro,.experience-lower{grid-template-columns:1fr}.detail-intro{gap:24px}.experience-section{padding:45px 0 75px}.experience-heading{align-items:start;flex-direction:column;gap:8px}.experience-audio,.experience-book{padding:24px}.video-frame{border-width:5px}}
