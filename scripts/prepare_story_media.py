@@ -30,6 +30,8 @@ SOURCES = {
     "odon-tuntang-tingang": (BASE / "Gelombang 2" / "Video" / "Odon tuntang Tingang.mp4", BASE / "Gelombang 2" / "Odon tuntang Tingang" / "Odon tuntang Tingang (Harry Wahyudi).pdf"),
     "pipet-purun": (BASE / "Gelombang 2" / "Video" / "Pipet Purun Rumbun tuntang Rimbun (1).mp4", BASE / "Gelombang 1" / "Revisi" / "Pipet Purun Rumbun tuntang Rimbun.pdf"),
     "pulau-borneoku": (BASE / "Gelombang 2" / "Video" / "Pulau Borneoku je Tatau Haliai_.mp4", BASE / "Gelombang 2" / "Pulau Borneoku je Tatau Haliai" / "Pulau Borneoku je Tatau Haliai (Valentina).pdf"),
+    "gunter-hi-undrang": (ROOT / "data" / "Gelombang 1 Susulan" / "Video" / "Gunter hi Undrang.mp4", ROOT / "data" / "Gelombang 1 Susulan" / "Buku" / "Gunter hi Undrang.pdf"),
+    "tingang-tuntang-tanteluhe": (ROOT / "data" / "Gelombang 1 Susulan" / "Video" / "Tingang tuntang Tenteluhe.mp4", ROOT / "data" / "Gelombang 1 Susulan" / "Buku" / "Tingang tuntang Tanteluhe.pdf"),
 }
 
 
@@ -103,8 +105,14 @@ def ordered_cues(slug: str, cues: list[dict[str, int]], page_count: int) -> list
 def main() -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     CUES.parent.mkdir(parents=True, exist_ok=True)
-    result = {}
+    selected = set(sys.argv[1:])
+    unknown = selected - SOURCES.keys()
+    if unknown:
+        raise ValueError(f"Unknown story slugs: {sorted(unknown)}")
+    result = json.loads(CUES.read_text(encoding="utf-8")) if selected and CUES.exists() else {}
     for slug, (video, pdf) in SOURCES.items():
+        if selected and slug not in selected:
+            continue
         if not video.is_file() or not pdf.is_file():
             raise FileNotFoundError(f"Missing video or PDF for {slug}")
         directory = OUTPUT / slug

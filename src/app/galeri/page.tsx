@@ -7,7 +7,7 @@ import { CulturalMotif } from "@/components/cultural-motif";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata("/galeri", "Galeri Cerita", "Jelajahi sembilan video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.");
+export const metadata: Metadata = pageMetadata("/galeri", "Galeri Cerita", "Jelajahi sebelas video cerita rakyat Kalimantan Tengah, lengkap dengan audio dan buku PDF.");
 
 export default function GalleryPage() {
   return (
@@ -17,7 +17,7 @@ export default function GalleryPage() {
         <div className="wrap">
           <div className="section-kicker">GALERI CERITA / HAPAKAT</div>
           <h1>Temukan kisah.<br /><em>Lihat dan dengarkan.</em></h1>
-          <p>Sembilan video cerita dwibahasa dari Kalimantan Tengah. Setiap kisah dilengkapi audio dan halaman PDF yang mengikuti narasi.</p>
+          <p>Sebelas video cerita dwibahasa dari Kalimantan Tengah. Setiap kisah dilengkapi audio dan halaman PDF yang mengikuti narasi.</p>
           <a className="button button-primary" href="#koleksi">Jelajahi video cerita <span aria-hidden="true"><ArrowIcon /></span></a>
           <div className="page-hero-deco" aria-hidden="true">◌</div>
         </div>

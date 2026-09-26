@@ -1,10 +1,11 @@
-"""Create web-sized MP4 copies of the nine source videos for ImageKit delivery."""
+"""Create web-sized MP4 copies of the story videos for CDN delivery."""
 
 from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data" / "AUDIOBOOK CERITA DAERAH"
+SUSULAN = ROOT / "data" / "Gelombang 1 Susulan" / "Video"
 OUTPUT = ROOT / "tmp" / "imagekit-videos"
 VIDEOS = {
     "tulak-nyasap": SOURCE / "Tulak Nyasap.mp4",
@@ -16,6 +17,8 @@ VIDEOS = {
     "odon-tuntang-tingang": SOURCE / "Gelombang 2" / "Video" / "Odon tuntang Tingang.mp4",
     "pipet-purun": SOURCE / "Gelombang 2" / "Video" / "Pipet Purun Rumbun tuntang Rimbun (1).mp4",
     "pulau-borneoku": SOURCE / "Gelombang 2" / "Video" / "Pulau Borneoku je Tatau Haliai_.mp4",
+    "gunter-hi-undrang": SUSULAN / "Gunter hi Undrang.mp4",
+    "tingang-tuntang-tanteluhe": SUSULAN / "Tingang tuntang Tenteluhe.mp4",
 }
 
 OUTPUT.mkdir(parents=True, exist_ok=True)

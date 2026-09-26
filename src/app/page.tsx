@@ -36,7 +36,7 @@ export default function Home() {
           <p><ScrambleText block delay={450} text="Tonton dan dengarkan cerita rakyat dalam bahasa Dayak Ngaju, Maanyan, dan Bakumpay. Baca halaman buku yang mengikuti narasinya." /></p>
           <div className="hero-actions"><Link className="button button-primary" href={`/galeri/${featured.slug}`}><ScrambleText delay={700} text="Tonton cerita pilihan" /><span aria-hidden="true"><ArrowIcon /></span></Link><Link className="text-link" href="/galeri"><ScrambleText delay={800} text="Lihat semua cerita" /><span aria-hidden="true"><ArrowIcon direction="right" /></span></Link></div>
           <HomeAudioSurprise />
-          <div className="hero-stats" aria-label="Koleksi Hapakat"><div><strong><ScrambleText text="09" /></strong><span><ScrambleText text="video cerita" /></span></div><div><strong><ScrambleText text="03" /></strong><span><ScrambleText text="bahasa daerah" /></span></div><div><strong><ScrambleText text="02" /></strong><span><ScrambleText text="gelombang cerita" /></span></div></div>
+          <div className="hero-stats" aria-label="Koleksi Hapakat"><div><strong><ScrambleText text="11" /></strong><span><ScrambleText text="video cerita" /></span></div><div><strong><ScrambleText text="03" /></strong><span><ScrambleText text="bahasa daerah" /></span></div><div><strong><ScrambleText text="02" /></strong><span><ScrambleText text="gelombang cerita" /></span></div></div>
         </div>
         <Link href={`/galeri/${featured.slug}`} className="hero-art hero-feature" aria-label={`Buka ${featured.title}`}>
           <Image className="hero-cultural-photo" src="/media/heritage/hero-performance.webp" alt="Pertunjukan seni budaya Kalimantan Tengah" fill priority sizes="(max-width: 800px) 100vw, 45vw" />

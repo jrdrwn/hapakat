@@ -69,8 +69,8 @@ stories = [
         r'\{ slug: "([^"]+)", title: "([^"]+)", subtitle: "([^"]+)", language: "([^"]+)"', source
     )
 ]
-if len(stories) != 9:
-    raise RuntimeError(f"Expected 9 stories, found {len(stories)}")
+if len(stories) != 11:
+    raise RuntimeError(f"Expected 11 stories, found {len(stories)}")
 for story in stories:
     canvas = Image.new("RGB", (1200, 630), "#251B15")
     draw = ImageDraw.Draw(canvas)

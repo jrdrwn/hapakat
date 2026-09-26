@@ -1111,5 +1111,227 @@
         "page": 28
       }
     ]
+  },
+  "gunter-hi-undrang": {
+    "pageCount": 32,
+    "cues": [
+      {
+        "time": 0,
+        "page": 1
+      },
+      {
+        "time": 5,
+        "page": 2
+      },
+      {
+        "time": 9,
+        "page": 3
+      },
+      {
+        "time": 44,
+        "page": 4
+      },
+      {
+        "time": 49,
+        "page": 5
+      },
+      {
+        "time": 53,
+        "page": 6
+      },
+      {
+        "time": 70,
+        "page": 7
+      },
+      {
+        "time": 81,
+        "page": 8
+      },
+      {
+        "time": 93,
+        "page": 9
+      },
+      {
+        "time": 113,
+        "page": 10
+      },
+      {
+        "time": 134,
+        "page": 11
+      },
+      {
+        "time": 162,
+        "page": 12
+      },
+      {
+        "time": 173,
+        "page": 13
+      },
+      {
+        "time": 186,
+        "page": 14
+      },
+      {
+        "time": 206,
+        "page": 15
+      },
+      {
+        "time": 225,
+        "page": 16
+      },
+      {
+        "time": 249,
+        "page": 17
+      },
+      {
+        "time": 272,
+        "page": 18
+      },
+      {
+        "time": 287,
+        "page": 19
+      },
+      {
+        "time": 303,
+        "page": 20
+      },
+      {
+        "time": 325,
+        "page": 21
+      },
+      {
+        "time": 340,
+        "page": 22
+      },
+      {
+        "time": 357,
+        "page": 23
+      },
+      {
+        "time": 376,
+        "page": 24
+      },
+      {
+        "time": 386,
+        "page": 25
+      },
+      {
+        "time": 399,
+        "page": 26
+      },
+      {
+        "time": 409,
+        "page": 27
+      },
+      {
+        "time": 418,
+        "page": 28
+      },
+      {
+        "time": 429,
+        "page": 29
+      },
+      {
+        "time": 452,
+        "page": 30
+      },
+      {
+        "time": 456,
+        "page": 31
+      }
+    ]
+  },
+  "tingang-tuntang-tanteluhe": {
+    "pageCount": 22,
+    "cues": [
+      {
+        "time": 0,
+        "page": 1
+      },
+      {
+        "time": 4,
+        "page": 2
+      },
+      {
+        "time": 8,
+        "page": 3
+      },
+      {
+        "time": 29,
+        "page": 4
+      },
+      {
+        "time": 31,
+        "page": 5
+      },
+      {
+        "time": 33,
+        "page": 6
+      },
+      {
+        "time": 38,
+        "page": 7
+      },
+      {
+        "time": 45,
+        "page": 8
+      },
+      {
+        "time": 52,
+        "page": 9
+      },
+      {
+        "time": 58,
+        "page": 10
+      },
+      {
+        "time": 65,
+        "page": 11
+      },
+      {
+        "time": 69,
+        "page": 12
+      },
+      {
+        "time": 78,
+        "page": 13
+      },
+      {
+        "time": 82,
+        "page": 14
+      },
+      {
+        "time": 93,
+        "page": 15
+      },
+      {
+        "time": 99,
+        "page": 16
+      },
+      {
+        "time": 104,
+        "page": 17
+      },
+      {
+        "time": 108,
+        "page": 18
+      },
+      {
+        "time": 115,
+        "page": 19
+      },
+      {
+        "time": 122,
+        "page": 20
+      },
+      {
+        "time": 126,
+        "page": 21
+      },
+      {
+        "time": 131,
+        "page": 22
+      }
+    ]
   }
 }

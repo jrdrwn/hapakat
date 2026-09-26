@@ -2,6 +2,7 @@ import "server-only";
 import { join } from "node:path";
 
 const base = join(process.cwd(), "data", "AUDIOBOOK CERITA DAERAH");
+const susulan = join(process.cwd(), "data", "Gelombang 1 Susulan", "Video");
 const sources: Record<string, string[]> = {
   "tulak-nyasap": ["Tulak Nyasap.mp4"],
   "tandik-bagagasa": ["Tandik Bagagasa.mp4"],
@@ -15,6 +16,8 @@ const sources: Record<string, string[]> = {
 };
 
 export function videoFileFor(slug: string) {
+  if (slug === "gunter-hi-undrang") return join(susulan, "Gunter hi Undrang.mp4");
+  if (slug === "tingang-tuntang-tanteluhe") return join(susulan, "Tingang tuntang Tenteluhe.mp4");
   const parts = sources[slug];
   return parts ? join(base, ...parts) : null;
 }

@@ -15,6 +15,7 @@ const slugs = [
   "tulak-nyasap", "tandik-bagagasa", "lomba-balanjaan",
   "dombi-je-bahalap-atei", "hi-nisa-pannai-ikamit", "lanting-bara-batang-pisang",
   "odon-tuntang-tingang", "pipet-purun", "pulau-borneoku",
+  "gunter-hi-undrang", "tingang-tuntang-tanteluhe",
 ];
 const authorization = `Basic ${Buffer.from(`${key}:`).toString("base64")}`;
 
